@@ -1,0 +1,9 @@
+{
+    "threshold": 65,
+    "dataset": "dataset.json",
+    "stable_channel": 1144885865949175818,
+    "experimental_channel": 1145276283073347617,
+    "managers": [
+        583200866631155714
+    ]
+}
