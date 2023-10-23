@@ -1,5 +1,5 @@
-import json
-import random
+from json import load
+from random import choice 
 from collections import Counter
 from rapidfuzz import fuzz
 from markovify import Text
@@ -9,11 +9,11 @@ class Bot:
         self.dataset_file = dataset_file
 
         with open(dataset_file, "r") as dataset: 
-            self.dataset = json.load(dataset)
+            self.dataset = load(dataset)
 
     def refreshDataset(self):
         with open(self.dataset_file, "r") as dataset:
-            self.dataset = json.load(dataset)
+            self.dataset = load(dataset)
 
     def ask(self, user_input: str, *, threshold: int = 65, corpus_tries: int = 100):
         matches = []
@@ -64,13 +64,13 @@ class Bot:
             )
 
         def returnNest(nest, category, topic, topicScore):
-            reply = random.choice(nest)
-            decodedReply = "".join(random.choice(words) for words in reply if (word := random.choice(words)) != "" and not word.__contains__("<end>"))
+            reply = choice(nest)
+            decodedReply = "".join(choice(words) for words in reply if (word := choice(words)) != "" and not word.__contains__("<end>"))
             return decodedReply, category, topic, topicScore, "nest"
 
         if ranks:
             return returnCorpus(ranks)
 
-        reply = random.choice(self.dataset["response-handle"]["no-response"])
-        decodedReply = "".join(random.choice(words) for words in reply if (word := random.choice(words)) != "" and not word.__contains__("<end>"))
+        reply = choice(self.dataset["response-handle"]["no-response"])
+        decodedReply = "".join(choice(words) for words in reply if (word := choice(words)) != "" and not word.__contains__("<end>"))
         return decodedReply, "response-handle", "no-response", 0, "error"
