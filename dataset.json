@@ -4,24 +4,24 @@
             "greet-hello": {
                 "input": {
                     "patterns": [
-                        "hello",
-                        "hey there",
-                        "sup",
-                        "whats up",
-                        "yo",
-                        "wassup"
+                        
                     ],
 
-                    "highlight": [
+                    "highlight": [ 
                         ""
                     ]
                 },
 
-                "responses": [
-                    [
-                        ["Yo! how are you?"]
+                "responses": {
+                    "nest": [
+                        [
+                            []
+                        ]
+                    ],
+
+                    "corpus": [
                     ]
-                ]
+                }
             }
         }
     },
